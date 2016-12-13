@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="MySpot" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Spot</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.1.4/async.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="Mmain.js"></script>
+</head>
+
+<body ng-controller="TheMix as mygig">
+ <h1>
+  {{mygig.greeting}} 
+  </h1> 
+  <p> {{mygig.instructions1}}</p>
+  <p> {{mygig.instructions2}}</p> 
+  <p> {{mygig.instructions3}}</p>
+  <p> {{mygig.instructions4}}</p>
+  
+
+  <form ng-submit="mygig.getMix(mygig.artist1,
+                                mygig.artist2,
+                                mygig.artist3,
+                                mygig.artist4,
+                                mygig.artist5,
+                                mygig.song1,
+                                mygig.song2,
+                                mygig.song3,
+                                mygig.song4,
+                                mygig.song5,
+                                mygig.genre1,
+                                mygig.genre2,
+                                mygig.genre3,
+                                mygig.genre4,
+                                mygig.genre5,
+                                mygig.nSongs
+                                )">
+    <input ng-model="mygig.artist1" type="text" placeholder="First Artist Choice">
+    <input ng-model="mygig.artist2" type="text" placeholder="Second Artist Choice">
+    <input ng-model="mygig.artist3" type="text" placeholder="Third Artist Choice">
+    <input ng-model="mygig.artist4" type="text" placeholder="Fourth Artist Choice">
+    <input ng-model="mygig.artist5" type="text" placeholder="Fifth Artist Choice">
+    <br>
+    <input ng-model="mygig.song1" type="text" placeholder="First Song Choice">
+    <input ng-model="mygig.song2" type="text" placeholder="Second Song Choice">
+    <input ng-model="mygig.song3" type="text" placeholder="Third Song Choice">
+    <input ng-model="mygig.song4" type="text" placeholder="Fourth Song Choice">
+    <input ng-model="mygig.song5" type="text" placeholder="Fifth Song Choice">
+    <br>
+    <input ng-model="mygig.genre1" type="text" placeholder = "First Genre Choice">
+    <input ng-model="mygig.genre2" type="text" placeholder = "Second Genre Choice">
+    <input ng-model="mygig.genre3" type="text" placeholder = "Third Genre Choice">
+    <input ng-model="mygig.genre4" type="text" placeholder = "Fourth Genre Choice">
+    <input ng-model="mygig.genre5" type="text" placeholder = "Fifth Genre Choice">
+    <br>
+    <input ng-model="mygig.nSongs" type="text" placeholder = "Number of Songs (Max 100)">
+    <br>
+    <button>Make My Mix!</button>
+  </form>
+  <br>
+    <h1> {{mygig.mixTitle}}</h1> 
+  <br>
+    <ul>
+    <li ng-repeat="MixList in mygig.mix | orderBy:'artists[0].name'" ng-click="mygig.getArtists(artists)">
+      
+      <p>
+        {{MixList.name}}
+      </p>
+      
+      <p>
+        {{MixList.artists[0].name}}
+      </p>
+    </li>
+  </ul>
+  
+</body>
+
+</html>
